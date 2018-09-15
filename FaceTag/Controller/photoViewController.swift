@@ -90,9 +90,9 @@ class photoViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToAnalyzeView" {
-            let previewVC = segue.destination as! AnalyzeViewViewController
-            previewVC.image = image
+        if segue.identifier == "goToShowPhotoView" {
+            let previewVC = segue.destination as! showPhotoViewController
+            previewVC.image = self.image
         }
     }
     
@@ -103,7 +103,7 @@ extension photoViewController: AVCapturePhotoCaptureDelegate {
         if let imageData = photo.fileDataRepresentation() {
             print(imageData)
             image = UIImage(data: imageData)
-            performSegue(withIdentifier: "goToAnalyzeView", sender: nil)
+            performSegue(withIdentifier: "goToShowPhotoView", sender: nil)
             
         }
     }

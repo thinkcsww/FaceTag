@@ -17,6 +17,7 @@
 		FE11EE3B213D0DF9006484B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */; };
 		FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A3FDE214C9AA3004880CD /* photoViewController.swift */; };
 		FEEB1BA9214BCFF8003E6032 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */; };
+		FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE3A3FDE214C9AA3004880CD /* photoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoViewController.swift; sourceTree = "<group>"; };
 		FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				FE11EA0A2149266900EF4563 /* AnalyzeViewViewController.swift */,
 				FE11EA0C214930CB00EF4563 /* RealAnalyzeViewController.swift */,
 				FE3A3FDE214C9AA3004880CD /* photoViewController.swift */,
+				FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */,
 				FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */,
 				FE11EE29213D097C006484B6 /* ViewController.swift in Sources */,
 				FE11EA0D214930CB00EF4563 /* RealAnalyzeViewController.swift in Sources */,
