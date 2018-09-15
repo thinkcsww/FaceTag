@@ -10,14 +10,16 @@ import UIKit
 import Firebase
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        self.idTextField.delegate = self
+//        self.passwordTextField.delegate = self
 //        do {
 //            try Auth.auth().signOut()
 //        } catch {
@@ -26,15 +28,21 @@ class ViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        if let user = Auth.auth().currentUser {
+        if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "goToAnalyzeView", sender: self)
         }
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    
     @IBAction func loginButton(_ sender: Any) {
         let auth = Auth.auth()
         let id = idTextField.text!
