@@ -101,7 +101,7 @@ class photoViewController: UIViewController {
 extension photoViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            print(imageData)
+            print("촬영완료")
             image = UIImage(data: imageData)
             performSegue(withIdentifier: "goToShowPhotoView", sender: nil)
             
