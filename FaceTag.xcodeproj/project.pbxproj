@@ -16,6 +16,8 @@
 		FE11EE31213D097C006484B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE2F213D097C006484B6 /* LaunchScreen.storyboard */; };
 		FE11EE3B213D0DF9006484B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */; };
 		FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A3FDE214C9AA3004880CD /* photoViewController.swift */; };
+		FE5550A7215121E300CB21FE /* AnalyzeFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */; };
+		FE5550A921513A8000CB21FE /* AnalyzeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */; };
 		FEEB1BA9214BCFF8003E6032 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */; };
 		FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		FE11EE32213D097C006484B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE3A3FDE214C9AA3004880CD /* photoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoViewController.swift; sourceTree = "<group>"; };
+		FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeFinishViewController.swift; sourceTree = "<group>"; };
+		FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeChartViewController.swift; sourceTree = "<group>"; };
 		FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +111,8 @@
 				FE11EA0C214930CB00EF4563 /* RealAnalyzeViewController.swift */,
 				FE3A3FDE214C9AA3004880CD /* photoViewController.swift */,
 				FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */,
+				FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */,
+				FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,15 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVFaceDetectorResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVFaceDetectorResources.bundle",
 			);
@@ -273,12 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE5550A921513A8000CB21FE /* AnalyzeChartViewController.swift in Sources */,
 				FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */,
 				FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */,
 				FE11EE29213D097C006484B6 /* ViewController.swift in Sources */,
 				FE11EA0D214930CB00EF4563 /* RealAnalyzeViewController.swift in Sources */,
 				FE11EA0B2149266900EF4563 /* AnalyzeViewViewController.swift in Sources */,
 				FE11EE27213D097C006484B6 /* AppDelegate.swift in Sources */,
+				FE5550A7215121E300CB21FE /* AnalyzeFinishViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
