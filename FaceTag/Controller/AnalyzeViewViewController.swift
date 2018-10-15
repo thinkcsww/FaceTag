@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Photos
 
 class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,6 +20,8 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
     let imagePicker = UIImagePickerController()
     
     var transferredImage: UIImage?
+    var photo: UIImage?
+    var images: [UIImage] = []
     var faceImage: VisionImage?
     lazy var vision = Vision.vision()
     let options = VisionFaceDetectorOptions()
@@ -44,7 +47,6 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         options.modeType = .accurate
         
         
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,19 +65,40 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func analyzeButton(_ sender: Any) {
+        
+        
         let faceDetector = vision.faceDetector(options: options)
 //        faceImage = VisionImage(image: UIImage(named: "profileImage")!)
-        print("Face Detector Working")
-        faceDetector.detect(in: faceImage!) { (features, error) in
-            guard error == nil, let features = features, !features.isEmpty else {
-                print(error?.localizedDescription)
-                return
+        if faceImage == nil {
+            let alert = UIAlertController(title: "알림", message: "분석할 사진을 선택해주세요.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "알림", message: "본 작업은 시간이 소요됩니다.\n진행하시겠습니까?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default) { (alert: UIAlertAction!) in
+                self.GetAlbums()
+                print("Face Detector Working")
+                faceDetector.detect(in: self.faceImage!) { (features, error) in
+                    guard error == nil, let features = features, !features.isEmpty else {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    for feature in features {
+                        print("Happiness is \(feature.smilingProbability)")
+                        print("Happiness is \(feature.rightEyeOpenProbability)")
+                    }
+                }
+                print(self.images.count)
             }
-            for feature in features {
-                print("Happiness is \(feature.smilingProbability)")
-                print("Happiness is \(feature.rightEyeOpenProbability)")
-            }
+            let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            
+            
         }
+        
         
         
         
@@ -114,6 +137,44 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
             photoButton.layer.cornerRadius = photoButton.frame.size.width / 2
             photoButton.clipsToBounds = true
 //            photoButton.transform.rotated(by: CGFloat(Double.pi/4))
+            
+        }
+    }
+    func getAssets(fromCollection collection: PHAssetCollection) -> PHFetchResult<PHAsset> {
+        let photosOptions = PHFetchOptions()
+        photosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        photosOptions.predicate = NSPredicate(format: "mediaType == %d", PHAssetMediaType.image.rawValue)
+        
+        return PHAsset.fetchAssets(in: collection, options: photosOptions)
+    }
+    
+    func GetAlbums() {
+        // 앨범 fetch 옵션
+        let fetchOptions:PHFetchOptions = PHFetchOptions()
+        
+        // 앨범들을 fetchedAlbums에 넣는다. ex) 모든사진, 슬로우모션, 스크린샷 앨범 등등이 있고 그중 모든 사진만 받아온다 -> subtype 참고
+        let fetchedCollections : PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: fetchOptions)
+        
+        let imageManager = PHCachingImageManager()
+        
+        fetchedCollections.enumerateObjects { (collection, _, _) in
+            
+            let result = self.getAssets(fromCollection: collection)
+            print("\(String(describing: collection.localizedTitle)): \(result.count)")
+            print(result.object(at: 0))
+            
+            // 원래 넣어야됨 for문result.count
+            for i in 0 ..< 100 {
+                let asset = result.object(at: i)
+                imageManager.requestImage(for: asset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: nil) { (fetchedImage, _) in
+                    // Face Detection 하려면 아래 PNG를 해줘야함
+                    let imageData = UIImagePNGRepresentation(fetchedImage!)
+                    let realImage = UIImage(data: imageData!)
+//                    self.faceImage = VisionImage(image: finalImage!)
+                    self.images.append(realImage!)
+                }
+            }
+            self.faceImage = VisionImage(image: self.images[0])
             
         }
     }
