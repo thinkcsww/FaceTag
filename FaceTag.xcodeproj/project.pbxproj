@@ -18,6 +18,10 @@
 		FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A3FDE214C9AA3004880CD /* photoViewController.swift */; };
 		FE5550A7215121E300CB21FE /* AnalyzeFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */; };
 		FE5550A921513A8000CB21FE /* AnalyzeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */; };
+		FEA5ABFF2177084C0068F174 /* SexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5ABFE2177084C0068F174 /* SexViewController.swift */; };
+		FEA5AC01217719E30068F174 /* ChatMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5AC00217719E30068F174 /* ChatMatchingViewController.swift */; };
+		FEA5AC0321771D690068F174 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5AC0221771D690068F174 /* MainTabBarController.swift */; };
+		FEA5AC05217721EA0068F174 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5AC04217721EA0068F174 /* ProfileViewController.swift */; };
 		FEEB1BA9214BCFF8003E6032 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */; };
 		FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +42,10 @@
 		FE3A3FDE214C9AA3004880CD /* photoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoViewController.swift; sourceTree = "<group>"; };
 		FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeFinishViewController.swift; sourceTree = "<group>"; };
 		FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeChartViewController.swift; sourceTree = "<group>"; };
+		FEA5ABFE2177084C0068F174 /* SexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexViewController.swift; sourceTree = "<group>"; };
+		FEA5AC00217719E30068F174 /* ChatMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMatchingViewController.swift; sourceTree = "<group>"; };
+		FEA5AC0221771D690068F174 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		FEA5AC04217721EA0068F174 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FEEB1BA8214BCFF8003E6032 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +121,10 @@
 				FEFF5B35214CC59400ECB9C9 /* showPhotoViewController.swift */,
 				FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */,
 				FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */,
+				FEA5ABFE2177084C0068F174 /* SexViewController.swift */,
+				FEA5AC00217719E30068F174 /* ChatMatchingViewController.swift */,
+				FEA5AC0221771D690068F174 /* MainTabBarController.swift */,
+				FEA5AC04217721EA0068F174 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,8 +156,8 @@
 				FE11EE1F213D097C006484B6 /* Sources */,
 				FE11EE20213D097C006484B6 /* Frameworks */,
 				FE11EE21213D097C006484B6 /* Resources */,
-				7B31421ECC13E59B18872187 /* [CP] Embed Pods Frameworks */,
-				4D5C7A37B73C60939FCD7509 /* [CP] Copy Pods Resources */,
+				DE5C600FA02C3A6B2ADF221F /* [CP] Embed Pods Frameworks */,
+				5EE44ACAB6F9A5FA31485E85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,24 +216,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D5C7A37B73C60939FCD7509 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVFaceDetectorResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVFaceDetectorResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4FA25E787A297F10BAD8AB78 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,13 +234,38 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B31421ECC13E59B18872187 /* [CP] Embed Pods Frameworks */ = {
+		5EE44ACAB6F9A5FA31485E85 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileVision/GoogleMVFaceDetectorResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMVFaceDetectorResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE5C600FA02C3A6B2ADF221F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FaceTag/Pods-FaceTag-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -255,7 +274,10 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -275,9 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEA5AC01217719E30068F174 /* ChatMatchingViewController.swift in Sources */,
 				FE5550A921513A8000CB21FE /* AnalyzeChartViewController.swift in Sources */,
+				FEA5AC0321771D690068F174 /* MainTabBarController.swift in Sources */,
 				FEFF5B36214CC59400ECB9C9 /* showPhotoViewController.swift in Sources */,
 				FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */,
+				FEA5ABFF2177084C0068F174 /* SexViewController.swift in Sources */,
+				FEA5AC05217721EA0068F174 /* ProfileViewController.swift in Sources */,
 				FE11EE29213D097C006484B6 /* ViewController.swift in Sources */,
 				FE11EA0D214930CB00EF4563 /* RealAnalyzeViewController.swift in Sources */,
 				FE11EA0B2149266900EF4563 /* AnalyzeViewViewController.swift in Sources */,

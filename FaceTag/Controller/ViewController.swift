@@ -18,13 +18,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.idTextField.delegate = self
-//        self.passwordTextField.delegate = self
-//        do {
-//            try Auth.auth().signOut()
-//        } catch {
-//
-//        }
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print(id)
         auth.createUser(withEmail: id, password: password, completion: { (user, error) in
             if user != nil {
-                self.performSegue(withIdentifier: "goToAnalyzeView", sender: self)
+                self.performSegue(withIdentifier: "goToSexView", sender: self)
             } else {
                 if let myError = error?.localizedDescription {
                     print(myError)

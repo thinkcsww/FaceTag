@@ -23,8 +23,12 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
     var photo: UIImage?
     var images: [UIImage] = []
     var faceImage: VisionImage?
+    var labelImage: VisionImage?
     lazy var vision = Vision.vision()
-    let options = VisionFaceDetectorOptions()
+    let faceDectectorOptions = VisionFaceDetectorOptions()
+    let labelDetectorOptions = VisionLabelDetectorOptions(confidenceThreshold: 0.5)
+    var happiness: CGFloat?
+    var labels = [String : Int]()
     
     
     
@@ -32,6 +36,7 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         
         //Setting ImagePicker
+        print(labels)
         
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
@@ -42,9 +47,9 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         processTakenImage()
         
         
-        options.landmarkType = .all
-        options.classificationType = .all
-        options.modeType = .accurate
+        faceDectectorOptions.landmarkType = .all
+        faceDectectorOptions.classificationType = .all
+        faceDectectorOptions.modeType = .accurate
         
         
     }
@@ -56,6 +61,7 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
             faceImage = VisionImage(image: pickedImage)
             photoButton.setImage(pickedImage.resizedImage(newSize: CGSize(width: 82, height: 82)), for: .normal)
             photoButton.layer.cornerRadius = photoButton.frame.size.width / 2
@@ -63,11 +69,18 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         }
         dismiss(animated: true, completion: nil)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToRealAnalyzeView" {
+            let previewVC = segue.destination as! RealAnalyzeViewController
+            previewVC.images = self.images
+            previewVC.happiness = self.happiness
+        }
+    }
     
     @IBAction func analyzeButton(_ sender: Any) {
         
         
-        let faceDetector = vision.faceDetector(options: options)
+        
 //        faceImage = VisionImage(image: UIImage(named: "profileImage")!)
         if faceImage == nil {
             let alert = UIAlertController(title: "알림", message: "분석할 사진을 선택해주세요.", preferredStyle: .alert)
@@ -75,35 +88,21 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         } else {
+            faceDetection()
+            
             let alert = UIAlertController(title: "알림", message: "본 작업은 시간이 소요됩니다.\n진행하시겠습니까?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default) { (alert: UIAlertAction!) in
                 self.GetAlbums()
-                print("Face Detector Working")
-                faceDetector.detect(in: self.faceImage!) { (features, error) in
-                    guard error == nil, let features = features, !features.isEmpty else {
-                        print(error?.localizedDescription as Any)
-                        return
-                    }
-                    for feature in features {
-                        print("Happiness is \(feature.smilingProbability)")
-                        print("Happiness is \(feature.rightEyeOpenProbability)")
-                    }
-                }
-                print(self.images.count)
+                self.performSegue(withIdentifier: "goToRealAnalyzeView", sender: self)
             }
             let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
             alert.addAction(okAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
             
-            
         }
-        
-        
-        
-        
-//        performSegue(withIdentifier: "goToRealAnalyzeView", sender: self)
     }
+    
     @IBAction func photoButton(_ sender: Any) {
         let alert = UIAlertController(title: "사진입력", message: "방법을 선택해주세요.", preferredStyle: .alert)
         
@@ -121,6 +120,8 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    
     
     //Round the edge of the ui
     func roundingUi() {
@@ -148,6 +149,23 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
         return PHAsset.fetchAssets(in: collection, options: photosOptions)
     }
     
+    private func faceDetection() {
+
+        let faceDetector = vision.faceDetector(options: faceDectectorOptions)
+        print("Face Detector Working")
+        faceDetector.detect(in: self.faceImage!) { (features, error) in
+            guard error == nil, let features = features, !features.isEmpty else {
+                print(error?.localizedDescription as Any)
+                return
+            }
+            for feature in features {
+                self.happiness = feature.smilingProbability
+                print("Happiness is \(feature.smilingProbability)")
+                print("Happiness is \(feature.rightEyeOpenProbability)")
+            }
+        }
+    }
+    
     func GetAlbums() {
         // 앨범 fetch 옵션
         let fetchOptions:PHFetchOptions = PHFetchOptions()
@@ -163,8 +181,8 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
             print("\(String(describing: collection.localizedTitle)): \(result.count)")
             print(result.object(at: 0))
             
-            // 원래 넣어야됨 for문result.count
-            for i in 0 ..< 100 {
+            // 원래 넣어야됨 for문 result.count -> 디버깅 빨리하려고 30으로 해놓은거 
+            for i in 0 ..< 200 {
                 let asset = result.object(at: i)
                 imageManager.requestImage(for: asset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: nil) { (fetchedImage, _) in
                     // Face Detection 하려면 아래 PNG를 해줘야함
@@ -172,9 +190,11 @@ class AnalyzeViewViewController: UIViewController, UIImagePickerControllerDelega
                     let realImage = UIImage(data: imageData!)
 //                    self.faceImage = VisionImage(image: finalImage!)
                     self.images.append(realImage!)
+                    self.labelImage = VisionImage(image: realImage!)
+//                    self.imageLabeling()
+//                    print(self.labels)
                 }
             }
-            self.faceImage = VisionImage(image: self.images[0])
             
         }
     }
