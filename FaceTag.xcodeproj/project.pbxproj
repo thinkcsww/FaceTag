@@ -15,6 +15,7 @@
 		FE11EE2C213D097C006484B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE2A213D097C006484B6 /* Main.storyboard */; };
 		FE11EE31213D097C006484B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE2F213D097C006484B6 /* LaunchScreen.storyboard */; };
 		FE11EE3B213D0DF9006484B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */; };
+		FE2782D42178B20A0093BAA5 /* ChattingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2782D32178B20A0093BAA5 /* ChattingRoomViewController.swift */; };
 		FE3A3FDF214C9AA4004880CD /* photoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3A3FDE214C9AA3004880CD /* photoViewController.swift */; };
 		FE5550A7215121E300CB21FE /* AnalyzeFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */; };
 		FE5550A921513A8000CB21FE /* AnalyzeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */; };
@@ -39,6 +40,7 @@
 		FE11EE30213D097C006484B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE11EE32213D097C006484B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE11EE3A213D0DF9006484B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE2782D32178B20A0093BAA5 /* ChattingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingRoomViewController.swift; sourceTree = "<group>"; };
 		FE3A3FDE214C9AA3004880CD /* photoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoViewController.swift; sourceTree = "<group>"; };
 		FE5550A6215121E300CB21FE /* AnalyzeFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeFinishViewController.swift; sourceTree = "<group>"; };
 		FE5550A821513A8000CB21FE /* AnalyzeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeChartViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				FEA5AC00217719E30068F174 /* ChatMatchingViewController.swift */,
 				FEA5AC0221771D690068F174 /* MainTabBarController.swift */,
 				FEA5AC04217721EA0068F174 /* ProfileViewController.swift */,
+				FE2782D32178B20A0093BAA5 /* ChattingRoomViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				FEA5AC05217721EA0068F174 /* ProfileViewController.swift in Sources */,
 				FE11EE29213D097C006484B6 /* ViewController.swift in Sources */,
 				FE11EA0D214930CB00EF4563 /* RealAnalyzeViewController.swift in Sources */,
+				FE2782D42178B20A0093BAA5 /* ChattingRoomViewController.swift in Sources */,
 				FE11EA0B2149266900EF4563 /* AnalyzeViewViewController.swift in Sources */,
 				FE11EE27213D097C006484B6 /* AppDelegate.swift in Sources */,
 				FE5550A7215121E300CB21FE /* AnalyzeFinishViewController.swift in Sources */,
