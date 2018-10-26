@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AnalyzeFinishViewController: UIViewController {
     
@@ -25,11 +26,33 @@ class AnalyzeFinishViewController: UIViewController {
     @IBOutlet weak var top3ValueLabel: UILabel!
     
     var labels = [String : Int]()
+    let userId = Auth.auth().currentUser!.uid
     var happiness: CGFloat?
     var imageNum: Int?
+    var labelDB: Firestore? = nil
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // save status that this user is already analyzed.
+        userDefaults.set(true, forKey: Constants.labeled)
+        // Assign labels value
+        assignLabelsValue()
+        // Make View Corner Round
+        roundUI()
+        //Save
+        saveLabelsInDB()
+        
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    private func assignLabelsValue() {
         
         let labelSorted = labels.sorted(by: { $0.value > $1.value })
         
@@ -41,15 +64,16 @@ class AnalyzeFinishViewController: UIViewController {
         top2ValueLabel.text? = "\(labelSorted[1].value)"
         top3ValueLabel.text? = "\(labelSorted[2].value)"
         
-        // Make View Corner Round
-        roundUI()
-        
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func saveLabelsInDB() {
+        labelDB = Firestore.firestore()
+        labelDB?.collection("Label").document(userId).setData(labels) { err in
+            if let err = err {
+                print("Error writing document \(err)")
+            } else {
+                print("Document writing success")
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

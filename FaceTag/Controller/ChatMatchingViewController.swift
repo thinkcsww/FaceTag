@@ -22,13 +22,16 @@ class ChatMatchingViewController: UIViewController {
         
 
     }
+    
+    
     @IBAction func tagButton(_ sender: Any) {
-        print("hi")
+        performSegue(withIdentifier: "goToChatRoomView", sender: self)
     }
     
     @IBAction func moodButton(_ sender: Any) {
         print("bye")
     }
+    
     func roundUI() {
         print("im working man")
         tagMatchingView.layer.cornerRadius = 10.0

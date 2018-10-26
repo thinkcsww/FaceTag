@@ -10,25 +10,33 @@ import UIKit
 import Firebase
 
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let userDefaults = UserDefaults.standard
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        idTextField.becomeFirstResponder()
         
     }
+    // If already logged in segue to the analyze view
     override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser != nil {
+        if userDefaults.bool(forKey: Constants.labeled) && Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "goToMainView", sender: self)
+        } else if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "goToAnalyzeView", sender: self)
         }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -43,7 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         print(id)
         auth.createUser(withEmail: id, password: password, completion: { (user, error) in
             if user != nil {
-                self.performSegue(withIdentifier: "goToSexView", sender: self)
+                self.performSegue(withIdentifier: "goToAnalyzeView", sender: self)
             } else {
                 if let myError = error?.localizedDescription {
                     print(myError)
@@ -53,6 +61,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
             }
         })
+    }
+    @IBAction func signUpButton(_ sender: Any) {
+        performSegue(withIdentifier: "goToSignUpView", sender: self)
     }
     
 

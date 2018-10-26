@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>270668588559-mbmf7o7ajtgijqrqde6otgjae04eb1hg.apps.googleusercontent.com</string>
+	<string>98189945012-5d81chdv3ve4j25b6gi5gangqkrik9cm.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.270668588559-mbmf7o7ajtgijqrqde6otgjae04eb1hg</string>
+	<string>com.googleusercontent.apps.98189945012-5d81chdv3ve4j25b6gi5gangqkrik9cm</string>
 	<key>API_KEY</key>
-	<string>AIzaSyC0ieehYwyCFbNB63lTf2Ii9wCMmfNH-fc</string>
+	<string>AIzaSyAw71QEYjrCpL86mmy4_sgdvsYY3S9oJL8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>270668588559</string>
+	<string>98189945012</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.applory.FaceTag</string>
 	<key>PROJECT_ID</key>
-	<string>facetag-b0ef2</string>
+	<string>facetag-a3d24</string>
 	<key>STORAGE_BUCKET</key>
-	<string>facetag-b0ef2.appspot.com</string>
+	<string>facetag-a3d24.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:270668588559:ios:ba45ed76c3c42766</string>
+	<string>1:98189945012:ios:ba45ed76c3c42766</string>
 	<key>DATABASE_URL</key>
-	<string>https://facetag-b0ef2.firebaseio.com</string>
+	<string>https://facetag-a3d24.firebaseio.com</string>
 </dict>
 </plist>
